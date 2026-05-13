@@ -47,7 +47,8 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
   return {
     title: titleValue,
     ...(description ? {description} : {}),
-    alternates: {canonical: `/${slug}`},
+    alternates: {canonical: pageUrl},
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     openGraph: {
       title: titleValue,
       siteName,

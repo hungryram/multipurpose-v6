@@ -111,6 +111,7 @@ export type Block = {
   heroHeight?: 'small' | 'medium' | 'large' | 'custom'
   customHeroHeight?: string
   imageDisplayMode?: 'fill' | 'fullImage'
+  prioritizeImage?: boolean
   submitLabel?: string
   successMessage?: string
   errorMessage?: string

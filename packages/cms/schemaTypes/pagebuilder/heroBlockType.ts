@@ -79,6 +79,15 @@ export const heroBlockType = defineType({
       fieldset: 'settings',
     }),
     defineField({
+      name: 'prioritizeImage',
+      title: 'Prioritize Image Loading (if above the fold)',
+      description: 'Enable if this hero is visible on page load. Improves LCP.',
+      type: 'boolean',
+      initialValue: true,
+      hidden: ({parent}) => !parent?.image,
+      fieldset: 'settings',
+    }),
+    defineField({
       name: 'layout',
       title: 'Layout',
       type: 'blockLayout',

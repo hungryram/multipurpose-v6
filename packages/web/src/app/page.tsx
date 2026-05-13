@@ -20,7 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: titleValue,
     ...(description ? {description} : {}),
-    alternates: {canonical: '/'},
+    alternates: {canonical: siteUrl || '/'},
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     openGraph: {
       title: titleValue,
       siteName,

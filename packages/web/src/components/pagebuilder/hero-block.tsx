@@ -19,6 +19,7 @@ export function HeroBlock({ block }: { block: Block }) {
             : (block.imageOverlayColor?.hex ?? 'rgba(0, 0, 0, 0.45)')
     const hasImage = Boolean(heroImage)
     const displayMode = block.imageDisplayMode || 'fill'
+    const shouldPrioritize = block.prioritizeImage !== false // default true
 
     // Determine height class and style
     const heightClass =
@@ -40,6 +41,7 @@ export function HeroBlock({ block }: { block: Block }) {
                         fill
                         sizes="100vw"
                         loading="eager"
+                        {...(shouldPrioritize && {fetchPriority: 'high'})}
                         preload
                         className="object-cover"
                     />
@@ -58,6 +60,7 @@ export function HeroBlock({ block }: { block: Block }) {
                     height={1350}
                     className="w-full h-auto"
                     loading="eager"
+                    {...(shouldPrioritize && {fetchPriority: 'high'})}
                     preload
                 />
             )}

@@ -63,7 +63,8 @@ const sharedBlocksFields = `
 		imageOverlayColor,
 		heroHeight,
 		customHeroHeight,
-		imageDisplayMode
+		imageDisplayMode,
+		prioritizeImage
 	},
 	_type == "contentBlock" => {
 		content,
