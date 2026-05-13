@@ -1,6 +1,6 @@
 # Multipurpose v6
 
-**Deploy Next.js (Web):** [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhungryram%2Fmultipurpose-v6&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_API_VERSION&envDescription=Sanity%20project%20configuration&root-directory=packages/web)
+**Deploy Next.js (Web):** [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhungryram%2Fmultipurpose-v6&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET&envDescription=Sanity%20project%20configuration&root-directory=packages/web)
 
 **Deploy Sanity Studio (CMS):** [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhungryram%2Fmultipurpose-v6&env=SANITY_STUDIO_PROJECT_ID,SANITY_STUDIO_DATASET&envDescription=Sanity%20Studio%20configuration&root-directory=packages/cms)
 
