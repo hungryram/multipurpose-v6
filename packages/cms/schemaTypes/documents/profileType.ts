@@ -1,0 +1,106 @@
+import {defineField, defineType} from 'sanity'
+
+export const profileType = defineType({
+  name: 'profile',
+  title: 'Profile',
+  type: 'document',
+  groups: [
+    {name: 'company', title: 'Company', default: true},
+    {name: 'contact', title: 'Contact'},
+    {name: 'analytics', title: 'Analytics'},
+  ],
+  fields: [
+    defineField({
+      name: 'companyName',
+      title: 'Company Name',
+      type: 'string',
+      group: 'company',
+      validation: (rule) => rule.required().min(2).max(120),
+    }),
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.email(),
+    }),
+    defineField({
+      name: 'contactPhone',
+      title: 'Contact Phone',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.max(40),
+    }),
+    defineField({
+      name: 'websiteUrl',
+      title: 'Website URL',
+      type: 'url',
+      group: 'contact',
+    }),
+    defineField({
+      name: 'address',
+      title: 'Address',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.max(160),
+    }),
+    defineField({
+      name: 'city',
+      title: 'City',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.max(80),
+    }),
+    defineField({
+      name: 'state',
+      title: 'State',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.max(80),
+    }),
+    defineField({
+      name: 'zip',
+      title: 'ZIP',
+      type: 'string',
+      group: 'contact',
+      validation: (rule) => rule.max(20),
+    }),
+    defineField({
+      name: 'googleTagId',
+      title: 'Google Tag ID (GA4)',
+      description: 'Example: G-XXXXXXXXXX',
+      type: 'string',
+      group: 'analytics',
+      validation: (rule) => rule.max(30),
+    }),
+    defineField({
+      name: 'googleTagManagerId',
+      title: 'Google Tag Manager ID',
+      description: 'Example: GTM-XXXXXXX',
+      type: 'string',
+      group: 'analytics',
+      validation: (rule) => rule.max(30),
+    }),
+    defineField({
+      name: 'metaPixelId',
+      title: 'Meta Pixel ID',
+      type: 'string',
+      group: 'analytics',
+      validation: (rule) => rule.max(40),
+    }),
+    defineField({
+      name: 'customHeadCode',
+      title: 'Custom <head> Code',
+      description: 'Optional snippets for verification tags or third-party scripts.',
+      type: 'text',
+      group: 'analytics',
+      rows: 8,
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'companyName',
+      subtitle: 'contactEmail',
+    },
+  },
+})

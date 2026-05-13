@@ -1,0 +1,12 @@
+{
+  "name": "multipurpose-v6",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter @hungryram/web dev",
+    "dev:cms": "pnpm --filter @hungryram/cms dev",
+    "build:web": "pnpm --filter @hungryram/web build",
+    "build:cms": "pnpm --filter @hungryram/cms build",
+    "lint": "pnpm -r lint"
+  }
+}
