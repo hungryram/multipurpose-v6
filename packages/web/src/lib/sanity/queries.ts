@@ -34,8 +34,9 @@ const sharedLayoutFields = `
 	customMarginBottom,
 	backgroundType,
 	backgroundColor,
-	backgroundOverlayColor,
-	backgroundImage{${imageFields}}
+	textColor,
+	backgroundImage{${imageFields}},
+	backgroundOverlayColor
 `
 
 const sharedButtonFields = `
@@ -162,6 +163,16 @@ function buildAppearancePageQuery(homeProjection: string) {
 		companyName,
 		websiteUrl
 	},
+	primaryColor,
+	secondaryColor,
+	buttonPrimaryColor,
+	buttonPrimaryTextColor,
+	buttonSecondaryColor,
+	buttonSecondaryTextColor,
+	backgroundColor,
+	foregroundColor,
+	headingColor,
+	footerColor,
 	headerContainerWidth,
 	headerLogoSize,
 	headerLogo{${imageFields}},
@@ -189,6 +200,16 @@ const sharedAppearanceFields = `
 		companyName,
 		websiteUrl
 	},
+	primaryColor,
+	secondaryColor,
+	buttonPrimaryColor,
+	buttonPrimaryTextColor,
+	buttonSecondaryColor,
+	buttonSecondaryTextColor,
+	backgroundColor,
+	foregroundColor,
+	headingColor,
+	footerColor,
 	headerContainerWidth,
 	headerLogoSize,
 	headerLogo{${imageFields}},

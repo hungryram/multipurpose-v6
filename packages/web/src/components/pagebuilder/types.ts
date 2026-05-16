@@ -20,8 +20,9 @@ export type BlockLayout = {
   marginBottom?: 'none' | 'small' | 'medium' | 'large' | 'custom'
   customMarginTop?: string
   customMarginBottom?: string
-  backgroundType?: 'none' | 'color' | 'image'
+  backgroundType?: 'none' | 'primary' | 'secondary' | 'color' | 'image'
   backgroundColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  textColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
   backgroundImage?: {
     _type: 'image'
     asset?: {_ref: string; _type: string}

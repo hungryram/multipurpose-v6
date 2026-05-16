@@ -136,7 +136,9 @@ export const blockLayoutType = defineType({
       options: {
         list: [
           {title: 'None', value: 'none'},
-          {title: 'Color', value: 'color'},
+          {title: 'Primary Background', value: 'primary'},
+          {title: 'Secondary Background', value: 'secondary'},
+          {title: 'Custom Color', value: 'color'},
           {title: 'Image', value: 'image'},
         ],
         layout: 'radio',
@@ -147,6 +149,12 @@ export const blockLayoutType = defineType({
       title: 'Background Color',
       type: 'color',
       hidden: ({parent}) => parent?.backgroundType !== 'color',
+    }),
+    defineField({
+      name: 'textColor',
+      title: 'Text Color',
+      type: 'color',
+      description: 'Controls the text color for the block content.',
     }),
     defineField({
       name: 'backgroundImage',

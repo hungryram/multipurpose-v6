@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import {cache} from 'react'
+import {cache, type CSSProperties} from 'react'
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import {Header} from '@/components/header'
@@ -33,6 +33,16 @@ type SiteProfile = {
 }
 
 type SiteChromeData = {
+  primaryColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  secondaryColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  buttonPrimaryColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  buttonPrimaryTextColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  buttonSecondaryColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  buttonSecondaryTextColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  backgroundColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  foregroundColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  headingColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  footerColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
   headerContainerWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid' | 'full'
   headerLogoSize?: 'sm' | 'md' | 'lg'
   headerLogo?: {
@@ -43,6 +53,19 @@ type SiteChromeData = {
   footerDisclaimer?: PortableTextValue
   footerContainerWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid' | 'full'
   footerNavigation?: Array<NavItem>
+}
+
+function colorToCss(color?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}) {
+  if (!color) {
+    return undefined
+  }
+
+  if (color.rgb) {
+    const {r, g, b, a = 1} = color.rgb
+    return `rgba(${r}, ${g}, ${b}, ${a})`
+  }
+
+  return color.hex
 }
 
 const getSiteProfile = cache(async function getSiteProfile() {
@@ -149,11 +172,30 @@ export default async function RootLayout({
 }>) {
   const [profile, siteChrome] = await Promise.all([getSiteProfile(), getSiteChrome()])
   const organizationSchema = buildOrganizationSchema(profile)
+  const themeStyle = {
+    '--site-background': colorToCss(siteChrome?.backgroundColor),
+    '--site-foreground': colorToCss(siteChrome?.foregroundColor),
+    '--site-primary': colorToCss(siteChrome?.primaryColor),
+    '--site-secondary': colorToCss(siteChrome?.secondaryColor),
+    '--site-footer': colorToCss(siteChrome?.footerColor),
+    '--site-heading-color': colorToCss(siteChrome?.headingColor),
+    '--site-button-primary': colorToCss(siteChrome?.buttonPrimaryColor),
+    '--site-button-primary-text': colorToCss(siteChrome?.buttonPrimaryTextColor),
+    '--site-button-secondary': colorToCss(siteChrome?.buttonSecondaryColor),
+    '--site-button-secondary-text': colorToCss(siteChrome?.buttonSecondaryTextColor),
+    '--primary': colorToCss(siteChrome?.primaryColor),
+    '--secondary': colorToCss(siteChrome?.secondaryColor),
+    '--button-primary': colorToCss(siteChrome?.buttonPrimaryColor),
+    '--button-primary-text': colorToCss(siteChrome?.buttonPrimaryTextColor),
+    '--button-secondary': colorToCss(siteChrome?.buttonSecondaryColor),
+    '--button-secondary-text': colorToCss(siteChrome?.buttonSecondaryTextColor),
+  } as CSSProperties
 
   return (
     <html
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      style={themeStyle}
     >
       <body className="min-h-full flex flex-col">
         {organizationSchema ? (

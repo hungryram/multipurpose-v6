@@ -12,8 +12,9 @@ type Layout = {
   marginBottom?: 'none' | 'small' | 'medium' | 'large' | 'custom'
   customMarginTop?: string
   customMarginBottom?: string
-  backgroundType?: 'none' | 'color' | 'image'
+  backgroundType?: 'none' | 'primary' | 'secondary' | 'color' | 'image'
   backgroundColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
+  textColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
   backgroundImage?: {_type: 'image'; asset?: {_ref: string; _type: string}; alt?: string}
   backgroundOverlayColor?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}
 }
@@ -44,9 +45,30 @@ function spacingValue(preset?: string, custom?: string): string {
   return '0'
 }
 
+function colorToCss(color?: {_type: 'color'; hex?: string; rgb?: {r: number; g: number; b: number; a?: number}}) {
+  if (!color) {
+    return undefined
+  }
+
+  if (color.rgb) {
+    const {r, g, b, a = 1} = color.rgb
+    return `rgba(${r}, ${g}, ${b}, ${a})`
+  }
+
+  return color.hex
+}
+
 function getBackgroundStyle(layout?: Layout): React.CSSProperties {
   if (!layout?.backgroundType || layout.backgroundType === 'none') {
     return {}
+  }
+
+  if (layout.backgroundType === 'primary') {
+    return {backgroundColor: 'var(--primary, #ffffff)'}
+  }
+
+  if (layout.backgroundType === 'secondary') {
+    return {backgroundColor: 'var(--secondary, #f4f4f5)'}
   }
 
   if (layout.backgroundType === 'color' && layout.backgroundColor) {
@@ -96,6 +118,7 @@ export function SectionContainer({
     <div
       style={{
         ...getBackgroundStyle(layout),
+        color: colorToCss(layout?.textColor),
         paddingTop: spacingValue(layout?.paddingTop, layout?.customPaddingTop),
         paddingBottom: spacingValue(layout?.paddingBottom, layout?.customPaddingBottom),
         marginTop: spacingValue(layout?.marginTop, layout?.customMarginTop),

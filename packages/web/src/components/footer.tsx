@@ -58,11 +58,11 @@ export function Footer({
           )}
         </div>
 
-        <div className="mt-4 border-t border-zinc-200 pt-4 text-xs text-zinc-600">
+        <div className="mt-4 border-t border-zinc-200 pt-4 text-xs">
           <p>Copyright © {currentYear}. All rights reserved.</p>
           <p className="mt-1">
             Built by{' '}
-            <Link href="https://hungryram.com" target="_blank" rel="noopener noreferrer" className="underline">
+            <Link href="https://hungryram.com" target="_blank" rel="noopener noreferrer">
               Hungry Ram LLC
             </Link>
             .

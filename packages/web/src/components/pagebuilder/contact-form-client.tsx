@@ -228,7 +228,7 @@ export function ContactFormClient({block}: {block: Block}) {
 
       <div className="col-span-2">
         <button
-          className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+          className="rounded-md cursor-pointer bg-(--button-primary,#18181b) px-4 py-2 text-sm font-medium text-[var(--button-primary-text,#ffffff)] disabled:opacity-60"
           type="submit"
           disabled={submitState.status === 'submitting' || !block._key}
         >

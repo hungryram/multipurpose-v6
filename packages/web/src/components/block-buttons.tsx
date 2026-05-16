@@ -4,9 +4,8 @@ import type {Block} from './pagebuilder/types'
 type ButtonItem = NonNullable<Block['buttons']>[number]
 
 function buttonClass(style: ButtonItem['style']) {
-  
   if (style === 'secondary') {
-    return 'inline-flex rounded-md border border-current/70 px-4 py-2 text-sm font-medium text-current'
+    return 'inline-flex rounded-md bg-[var(--button-secondary,#52525b)] px-4 py-2 text-sm font-medium text-[var(--button-secondary-text,#ffffff)] transition-opacity hover:opacity-90'
   }
 
   if (style === 'ghost') {
@@ -14,7 +13,7 @@ function buttonClass(style: ButtonItem['style']) {
   }
 
   // PRIMARY
-  return 'inline-flex rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white'
+  return 'inline-flex rounded-md bg-[var(--button-primary,#18181b)] px-4 py-2 text-sm font-medium text-[var(--button-primary-text,#ffffff)] transition-opacity hover:opacity-90'
 }
 
 function justifyClass(textAlign?: 'left' | 'center' | 'right') {
